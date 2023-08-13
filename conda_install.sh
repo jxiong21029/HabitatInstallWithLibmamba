@@ -36,7 +36,6 @@ ln -s "/usr/local/lib/python${PYTHON_VERSION}/dist-packages" "/usr/local/lib/pyt
 ####
 
 conda install -y -n base conda-libmamba-solver
-conda config --set solver libmamba
 
 ####
 
@@ -47,7 +46,7 @@ CHANNEL="${CHANNEL:-aihabitat}"
 if ${NIGHTLY}; then
   CHANNEL="${CHANNEL}-nightly"
 fi
-conda install -S -y --prefix /usr/local -c "${CHANNEL}" -c conda-forge habitat-sim headless withbullet "python=${PYTHON_VERSION}" "numpy=${NUMPY_VERSION}" "pillow=${PIL_VERSION}" "cffi=${CFFI_VERSION}" "scipy=${SCIPY_VERSION}" "numba=${NUMBA_VERSION}"
+conda install -S -y --solver=libmamba --prefix /usr/local -c "${CHANNEL}" -c conda-forge habitat-sim headless withbullet "python=${PYTHON_VERSION}" "numpy=${NUMPY_VERSION}" "pillow=${PIL_VERSION}" "cffi=${CFFI_VERSION}" "scipy=${SCIPY_VERSION}" "numba=${NUMBA_VERSION}"
 
 #Shallow GIT clone for speed
 git clone https://github.com/facebookresearch/habitat-lab --depth 1
