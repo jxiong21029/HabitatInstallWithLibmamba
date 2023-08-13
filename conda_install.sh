@@ -35,7 +35,7 @@ ln -s "/usr/local/lib/python${PYTHON_VERSION}/dist-packages" "/usr/local/lib/pyt
 
 ####
 
-conda install -n base conda-libmamba-solver
+conda install -y -n base conda-libmamba-solver
 conda config --set solver libmamba
 
 ####
